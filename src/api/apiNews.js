@@ -3,12 +3,15 @@ import axios from "axios";
 const BASE_URL = import.meta.env.VITE_NEWS_BASE_API_URL;
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
-export const getNews = async () => {
+export const getNews = async (page = 1, max = 10) => {
   try {
-    const response = await axios.get(`${BASE_URL}top-headlines`, {
+    const response = await axios.get(`${BASE_URL}/top-headlines`, {
       params: {
+        lang: "en",
         country: "us",
-        apiKey: API_KEY,
+        apikey: API_KEY,
+        page,
+        max,
       },
     });
     return response.data;

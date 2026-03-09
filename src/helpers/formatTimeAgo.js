@@ -1,19 +1,13 @@
 export const formatTimeAgo = (dateString) => {
-    const now = new Date();
-    const date = new Date(dateString);
-    const secondPast = (now.getTime() - date.getTime()) / 1000;
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) return "Invalid date";
 
-    if (secondPast < 60) {
-        return `${Math.floor(secondPast)}s ago`;
-    }
-    if (secondPast < 3600) {
-        return `${Math.floor(secondPast / 60)}m ago`;
-    }
-    if (secondPast <= 86400) {
-        return `${Math.floor(secondPast / 3600)}h ago`;
-    }
-    if (secondPast > 86400) {
-        const day = Math.floor(secondPast / 86400);
-        return day === 1 ? `${day} day ago` : `${day} days ago`;
-    }
+  const now = new Date();
+  const secondsPast = (now.getTime() - date.getTime()) / 1000;
+
+  if (secondsPast < 60) return `${Math.floor(secondsPast)}s ago`;
+  if (secondsPast < 3600) return `${Math.floor(secondsPast / 60)}m ago`;
+  if (secondsPast < 86400) return `${Math.floor(secondsPast / 3600)}h ago`;
+  const days = Math.floor(secondsPast / 86400);
+  return days === 1 ? `${days} day ago` : `${days} days ago`;
 };
