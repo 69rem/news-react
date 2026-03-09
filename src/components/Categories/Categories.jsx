@@ -1,13 +1,23 @@
-import {formatDate} from "../../helpers/formatDate.js";
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
-const Header = () => {
-    return (
-        <header className={styles.header}>
-            <h1 className={styles.title}>NEWS</h1>
-            <p className={styles.date}>{formatDate(new Date())}</p>
-        </header>
-    )
-}
+const Categories = ({ categories, setSelectedCategory, selectedCategory }) => {
+  return (
+    <div className={styles.categories}>
+      {categories.map((category) => {
+        return (
+          <button
+            onClick={() => setSelectedCategory(category)}
+            key={category}
+            className={
+              selectedCategory === category ? styles.active : styles.item
+            }
+          >
+            {category}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
 
-export default Header
+export default Categories;
