@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import NewsItem from "../News-item/News-item.jsx";
+import NewsItem from "../NewsItem/NewsItem.jsx";
 import withSkeleton from "../../helpers/hocs/withSkeleton.jsx";
 
 const NewsList = ({ news }) => {
