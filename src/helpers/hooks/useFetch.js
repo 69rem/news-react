@@ -20,7 +20,7 @@ export const useFetch = (fetchFunction, deps = []) => {
       };
 
       fetchData();
-    }, 500);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, deps);
