@@ -3,11 +3,12 @@ import NewsItem from "../NewsItem/NewsItem.jsx";
 import withSkeleton from "../../helpers/hocs/withSkeleton.jsx";
 
 const NewsList = ({ news }) => {
+  const articles = news || [];
+
   return (
     <ul className={styles.list}>
-      {news.map((item, index) => {
-        if (index === 0) return null;
-        return <NewsItem key={item.url} item={item} />;
+      {articles.map((item, index) => {
+        return <NewsItem key={item.id || index} item={item} />;
       })}
     </ul>
   );

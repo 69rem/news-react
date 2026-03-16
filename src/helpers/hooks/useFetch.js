@@ -1,26 +1,29 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-export const useFetch = (fetchFunction, params) => {
+export const useFetch = (fetchFunction, deps = []) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const stringParams = params ? new URLSearchParams(params).toString() : "";
 
   useEffect(() => {
-    (async () => {
-      try {
-        setIsLoading(true);
-        const result = await fetchFunction(params);
+    const timer = setTimeout(() => {
+      const fetchData = async () => {
+        try {
+          setIsLoading(true);
+          const result = await fetchFunction();
+          setData(result);
+        } catch (e) {
+          console.log(e);
+          setData({ articles: [] });
+        } finally {
+          setIsLoading(false);
+        }
+      };
 
-        setData(result);
-      } catch (e) {
-        setError(e);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
-  }, [fetchFunction, stringParams]);
+      fetchData();
+    }, 500);
 
-  return { data, isLoading, error };
+    return () => clearTimeout(timer);
+  }, deps);
+
+  return { data, isLoading };
 };
