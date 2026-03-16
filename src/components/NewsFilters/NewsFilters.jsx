@@ -4,17 +4,20 @@ import { CATEGORIES } from "../../constants/constants.js";
 import Search from "../Search/Search.jsx";
 import SearchStatus from "../SearchStatus/SearchStatus.jsx";
 import { useDebounce } from "../../helpers/hooks/useDebounce.js";
+import Slider from "../Slider/Slider.jsx";
 
 const NewsFilters = ({ filters, changeFilter, isLoading, articles }) => {
-  const debouncedKeywords = useDebounce(filters.keywords, 1200);
+  const debouncedKeywords = useDebounce(filters.keywords, 1300);
 
   return (
     <div className={styles.filters}>
-      <Categories
-        categories={CATEGORIES}
-        setSelectedCategory={(category) => changeFilter("category", category)}
-        selectedCategory={filters.category}
-      />
+      <Slider>
+        <Categories
+          categories={CATEGORIES}
+          setSelectedCategory={(category) => changeFilter("category", category)}
+          selectedCategory={filters.category}
+        />
+      </Slider>
 
       <Search
         keywords={filters.keywords}
