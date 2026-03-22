@@ -1,12 +1,20 @@
 import styles from "./styles.module.css";
-import Categories from "../Categories/Categories.jsx";
-import { CATEGORIES } from "../../constants/constants.js";
-import Search from "../Search/Search.jsx";
-import SearchStatus from "../SearchStatus/SearchStatus.jsx";
-import { useDebounce } from "../../helpers/hooks/useDebounce.js";
-import Slider from "../Slider/Slider.jsx";
+import Categories from "../Categories/Categories.tsx";
+import { CATEGORIES } from "../../constants/constants.ts";
+import Search from "../Search/Search.tsx";
+import SearchStatus from "../SearchStatus/SearchStatus.tsx";
+import { useDebounce } from "../../helpers/hooks/useDebounce.ts";
+import Slider from "../Slider/Slider.tsx";
+import type { IFilters, INews } from "../../interfaces";
 
-const NewsFilters = ({ filters, changeFilter, isLoading, articles }) => {
+interface Props {
+  filters: IFilters;
+  changeFilter: (key: string, value: string | number | null) => void;
+  isLoading: boolean;
+  articles?: INews[];
+}
+
+const NewsFilters = ({ filters, changeFilter, isLoading, articles }: Props) => {
   const debouncedKeywords = useDebounce(filters.keywords, 1300);
 
   return (

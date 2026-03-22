@@ -1,13 +1,18 @@
 import styles from "./styles.module.css";
-import { formatTimeAgo } from "../../helpers/formatTimeAgo.js";
-import Image from "../Image/Image.jsx";
+import { formatTimeAgo } from "../../helpers/formatTimeAgo.ts";
+import Image from "../Image/Image.tsx";
+import type { INews } from "../../interfaces";
 
-const NewsBanner = ({ item }) => {
+interface Props {
+  item: INews;
+}
+
+const NewsBanner = ({ item }: Props) => {
   if (!item) return null;
 
   return (
     <div className={styles.banner}>
-      <Image image={item?.image} alt={item.title} />
+      <Image image={item?.image} />
       <h3 className={styles.title}>{item.title}</h3>
       <p className={styles.extra}>
         {formatTimeAgo(item.publishedAt)} by {item.source?.name || "Unknown"}

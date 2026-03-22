@@ -5,6 +5,14 @@
     align-items: center;
 }
 
+.sliderContainer {
+    display: flex;
+    overflow-x: auto;
+    flex: 1;
+    gap: 8px;
+    padding: 4px 0;
+}
+
 .arrow {
     border: none;
     background-color: white;

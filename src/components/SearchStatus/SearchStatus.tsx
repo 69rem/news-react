@@ -1,6 +1,12 @@
 import styles from "./styles.module.css";
 
-const SearchStatus = ({ keywords, newsLength, isLoading }) => {
+interface Props {
+  keywords: string;
+  newsLength: number;
+  isLoading: boolean;
+}
+
+const SearchStatus = ({ keywords, newsLength, isLoading }: Props) => {
   if (!keywords || isLoading) return null;
 
   if (newsLength > 0) {
