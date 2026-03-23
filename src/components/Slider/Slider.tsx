@@ -1,5 +1,6 @@
 import styles from "./styles.module.css";
 import { useRef } from "react";
+import { useTheme } from "../../context/ThemeContext.tsx";
 
 interface Props {
   children: React.ReactElement;
@@ -7,6 +8,7 @@ interface Props {
 }
 
 const Slider = ({ children, step = 150 }: Props) => {
+  const { isDark } = useTheme();
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
@@ -22,7 +24,7 @@ const Slider = ({ children, step = 150 }: Props) => {
   };
 
   return (
-    <div className={styles.slider}>
+    <div className={`${styles.slider} ${isDark ? styles.dark : styles.light}`}>
       <button className={styles.arrow} onClick={scrollLeft}>
         {"<"}
       </button>
