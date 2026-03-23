@@ -7,8 +7,22 @@
 .noResults {
     padding: 20px;
     text-align: center;
-    color: #666;
     border-radius: 32px;
     margin: 16px 0;
     font-size: 14px;
+}
+
+.searchInfo.light {
+    color: #333;
+}
+.searchInfo.dark {
+    color: #dddddd;
+}
+
+.noResults.light {
+    color: #666;
+}
+
+.noResults.dark {
+    color: #dddddd;
 }

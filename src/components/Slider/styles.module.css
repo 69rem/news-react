@@ -3,18 +3,29 @@
     width: 100%;
     gap: 8px;
     align-items: center;
+    overflow: visible !important;
 }
 
 .sliderContainer {
     display: flex;
-    overflow-x: auto;
     flex: 1;
     gap: 8px;
     padding: 4px 0;
+    overflow: auto;
 }
 
 .arrow {
     border: none;
     background-color: white;
     cursor: pointer;
+}
+
+.slider.dark .arrow {
+    background-color: #23272f;
+    color: #f6f7f9;
+}
+
+.slider.light .arrow {
+    background-color: white;
+    color: black;
 }
