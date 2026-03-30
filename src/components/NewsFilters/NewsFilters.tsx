@@ -6,30 +6,37 @@ import SearchStatus from "../SearchStatus/SearchStatus.tsx";
 import { useDebounce } from "../../helpers/hooks/useDebounce.ts";
 import Slider from "../Slider/Slider.tsx";
 import type { IFilters, INews } from "../../interfaces";
+import { useAppDispatch } from "../../store";
+import { setFilters } from "../../store/slices/newsSlice.ts";
 
 interface Props {
   filters: IFilters;
-  changeFilter: (key: string, value: string | number | null) => void;
   isLoading: boolean;
   articles?: INews[];
 }
 
-const NewsFilters = ({ filters, changeFilter, isLoading, articles }: Props) => {
+const NewsFilters = ({ filters, isLoading, articles }: Props) => {
   const debouncedKeywords = useDebounce(filters.keywords, 1300);
+
+  const dispatch = useAppDispatch();
 
   return (
     <div className={styles.filters}>
       <Slider>
         <Categories
           categories={CATEGORIES}
-          setSelectedCategory={(category) => changeFilter("category", category)}
+          setSelectedCategory={(category) =>
+            dispatch(setFilters({ key: "category", value: category }))
+          }
           selectedCategory={filters.category}
         />
       </Slider>
 
       <Search
         keywords={filters.keywords}
-        setKeywords={(keywords) => changeFilter("keywords", keywords)}
+        setKeywords={(keywords) =>
+          dispatch(setFilters({ key: "keywords", value: keywords }))
+        }
       />
 
       <SearchStatus

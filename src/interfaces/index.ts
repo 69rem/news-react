@@ -12,6 +12,17 @@ export interface INews {
   };
 }
 
+export interface GetNewsParams {
+  page?: number;
+  max?: number;
+  category?: string | null;
+  keywords?: string;
+}
+
+export interface GetLatestNewsParams {
+  max?: number;
+}
+
 export interface NewsApiResponse {
   articles: INews[];
   totalArticles?: number;
