@@ -9,7 +9,7 @@ interface State {
 
 const initialState: State = {
   news: [],
-  filters: { page: 1, max: PAGE_SIZE, category: null, keywords: "" },
+  filters: { page: 1, max: PAGE_SIZE, category: "all", keywords: "" },
 };
 
 export const newsSlice = createSlice({
