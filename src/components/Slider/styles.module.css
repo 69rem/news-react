@@ -9,15 +9,25 @@
 .sliderContainer {
     display: flex;
     flex: 1;
+    overflow-x: auto;
+    scrollbar-width: none;
+    min-width: 0;
     gap: 8px;
     padding: 4px 0;
-    overflow: auto;
+}
+
+.sliderContainer > * {
+    display: flex;
+    flex-shrink: 0;
+    width: max-content;
+    gap: inherit;
 }
 
 .arrow {
     border: none;
     background-color: white;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .slider.dark .arrow {
