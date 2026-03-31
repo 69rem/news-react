@@ -1,9 +1,9 @@
 import styles from "./styles.module.css";
-import { useRef } from "react";
+import { type ReactNode, useRef } from "react";
 import { useTheme } from "../../context/ThemeContext.tsx";
 
 interface Props {
-  children: React.ReactElement;
+  children: ReactNode;
   step?: number;
 }
 
