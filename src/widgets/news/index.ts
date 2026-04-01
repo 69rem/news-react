@@ -1,4 +1,4 @@
-import BannersList from "@/widgets/news/ui/BannersList/BannersList.tsx";
 import NewsList from "@/widgets/news/ui/NewsList/NewsList.tsx";
+import NewsFilters from "@/widgets/news/ui/NewsFilters/NewsFilters.tsx";
 
-export { BannersList, NewsList };
+export { NewsList, NewsFilters };

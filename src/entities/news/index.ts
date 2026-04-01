@@ -4,9 +4,7 @@ import type {
   GetNewsParams,
   GetLatestNewsParams,
 } from "@/entities/news/model/types.ts";
+import NewsCard from "@/entities/news/ui/NewsCard/NewsCard.tsx";
 
-import NewsBanner from "@/entities/news/ui/NewsBanner/NewsBanner.tsx";
-import NewsItem from "@/entities/news/ui/NewsItem/NewsItem.tsx";
-
-export { NewsBanner, NewsItem };
+export { NewsCard };
 export type { NewsApiResponse, INews, GetLatestNewsParams, GetNewsParams };
