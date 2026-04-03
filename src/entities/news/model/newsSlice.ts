@@ -6,10 +6,12 @@ import type { IFilters } from "@/pages/main/model/types.ts";
 interface State {
   news: INews[];
   filters: IFilters;
+  currentNews: INews | null;
 }
 
 const initialState: State = {
   news: [],
+  currentNews: null,
   filters: { page: 1, max: PAGE_SIZE, category: "all", keywords: "" },
 };
 
@@ -19,6 +21,9 @@ export const newsSlice = createSlice({
   reducers: {
     setNews: (state, action: PayloadAction<INews[]>) => {
       state.news = action.payload;
+    },
+    setCurrentNews: (state, action: PayloadAction<INews | null>) => {
+      state.currentNews = action.payload;
     },
     setFilters: (
       state,
@@ -30,6 +35,6 @@ export const newsSlice = createSlice({
   },
 });
 
-export const { setNews, setFilters } = newsSlice.actions;
+export const { setNews, setFilters, setCurrentNews } = newsSlice.actions;
 
 export default newsSlice.reducer;
