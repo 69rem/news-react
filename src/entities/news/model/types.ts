@@ -5,6 +5,7 @@ export interface INews {
   content?: string;
   url: string;
   image: string;
+  lang?: string;
   publishedAt: string;
   source: {
     name: string;
