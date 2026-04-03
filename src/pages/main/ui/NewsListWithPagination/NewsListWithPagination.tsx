@@ -4,6 +4,7 @@ import NewsList from "@/widgets/news/ui/NewsList/NewsList.tsx";
 import type { IFilters } from "@/pages/main/model/types.ts";
 import type { INews } from "@/entities/news";
 import { usePagination } from "@/pages/main/utils/hooks/usePagination.ts";
+import { useNavigateTo } from "@/shared/hooks/useNavigateTo.ts";
 
 interface Props {
   filters: IFilters;
@@ -14,6 +15,7 @@ interface Props {
 const NewsListWithPagination = ({ filters, articles, isLoading }: Props) => {
   const { handleNextPage, handlePreviousPage, handlePageClick } =
     usePagination(filters);
+  const navigateTo = useNavigateTo();
 
   return (
     <Pagination
@@ -30,6 +32,11 @@ const NewsListWithPagination = ({ filters, articles, isLoading }: Props) => {
         direction="column"
         news={articles}
         isLoading={isLoading}
+        viewNewsSlot={(news: INews) => (
+          <p style={{ fontSize: "12px" }} onClick={() => navigateTo(news)}>
+            View more...
+          </p>
+        )}
       />
     </Pagination>
   );
